@@ -23,6 +23,6 @@ app.use(errorHandlers.mongooseErrors);
 //   app.use(express.static("client/build"));
 // }
 
-app.use(express.static("client/build"));
+app.use(express.static("../client/build"));
 
 module.exports = app;
