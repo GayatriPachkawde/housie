@@ -4,9 +4,13 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 let intervalId;
+const MONGODB_URI =
+  "mongodb+srv://gayatri123:gayatri123@hclustor.ootb3.mongodb.net/housie?retryWrites=true&w=majority" ||
+  process.env.DATABASE;
+const PORT = process.env.PORT || 8000;
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
@@ -26,8 +30,8 @@ require("./models/gameRoom");
 const app = require("./app");
 const gameRoom = require("./models/gameRoom");
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server listening on port ${process.env.PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
 
 const io = require("socket.io")(server);
