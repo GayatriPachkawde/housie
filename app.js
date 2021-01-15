@@ -16,11 +16,13 @@ app.use("/gameroom", require("./routes/gameRoom"));
 app.use(errorHandlers.notFound);
 app.use(errorHandlers.mongooseErrors);
 
-if (process.env.ENV === "PRODUCTION") {
-  app.use(errorHandlers.productionErrors);
-  app.use(express.static("client/build"));
-} else {
-  app.use(errorHandlers.developmentErrors);
-}
+// if (process.env.ENV === "DEVELOPMENT") {
+//   app.use(errorHandlers.developmentErrors);
+// } else {
+//   app.use(errorHandlers.productionErrors);
+//   app.use(express.static("client/build"));
+// }
+
+app.use(express.static("client/build"));
 
 module.exports = app;
